@@ -27,6 +27,6 @@ public class AdminServiceimpl implements AdminService {
 	public Admin queryone(Integer id) {
 		// TODO Auto-generated method stub
 		return this.adminMapper.selectByPrimaryKey(id);
-	}
+	} 
 
 }
