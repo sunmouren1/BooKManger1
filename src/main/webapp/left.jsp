@@ -16,18 +16,25 @@ li {
 a {
 	text-decoration: none;
 }
+
+h2 {
+	font-size: 200%;
+	color:skyblue;
+	opacity: 0.75;
+}
+
        </style>
 <script type="text/javascript">
 	             $(function() {
 		         $("#accordion").accordion();
 		        
-		        
 		         
 	})
 </script>
-<body background="">
+<body background="imges/6.jpg">
      <h2 class="demoHeaders" align="center">菜单</h2>
 	<div id="accordion">
+	
 		<h3>分类管理</h3>
 		<div>
 			
@@ -41,20 +48,15 @@ a {
 		<h3>图书管理</h3>
 		<div>
 	
-
-				<li><a href= "addBook.jsp" target="right" ><span class="ui-icon ui-icon-circle-plus"></span>添加图书</a></li>
-				<li><a href="Bookservlet?action=showBookByPage" target="right" ><span class="ui-icon ui-icon-copy"></span>查看图书</a></li>
+				<li><a href= "addUI" target="right" ><span class="ui-icon ui-icon-circle-plus"></span>添加图书</a></li>
+				<li><a href="showByPage" target="right" ><span class="ui-icon ui-icon-copy"></span>查看图书</a></li>
 				<!--  <li><a href="xiugaiBook.jsp" target="right"><span class="ui-icon ui-icon-wrench"></span>修改图书</a></li>-->
 				
-
-	
-	  
-	  
 	  </div>
 	  <h3>用户管理</h3>
 		<div>
 				<li><a  href="addUser.jsp" target="right"><span class="ui-icon ui-icon-circle-plus"></span>添加用户</a></li>
-				<li><a href="monsters" target="right"  ><span class="ui-icon ui-icon-copy"></span>查看用户</a></li>
+				<li><a href="Userservlet?action=showUserByPage" target="right"  ><span class="ui-icon ui-icon-copy"></span>查看用户</a></li>
 				
 			
 
