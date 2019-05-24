@@ -11,6 +11,24 @@
     <result column="fenlei" jdbcType="VARCHAR" property="fenlei" />
     <result column="f_id" jdbcType="INTEGER" property="fId" />
   </resultMap>
+  
+   <resultMap id="BaseResultMap2" type="com.oralce.web.bean.SubBook">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="jiage" jdbcType="VARCHAR" property="jiage" />
+    <result column="chubanshe" jdbcType="VARCHAR" property="chubanshe" />
+    <result column="zhuangtai" jdbcType="VARCHAR" property="zhuangtai" />
+    <result column="jieshuren" jdbcType="VARCHAR" property="jieshuren" />
+    <result column="fenlei" jdbcType="VARCHAR" property="fenlei" />
+    <result column="f_id" jdbcType="INTEGER" property="fId" />
+    
+    		<!-- 映射对象：关联对象School -->
+		<association property="fenLei" javaType="Fenlei">
+			<id property="id" column="id"></id>
+			<result property="name" column="name"/>
+			
+		</association> 
+  </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from book
     where id = #{id,jdbcType=INTEGER}
@@ -44,4 +62,13 @@
     from book
   </select>
   
+  <select id="selectAllWithOneSQL" resultMap="BaseResultMap2">
+    select *
+    from book,fenlei where book.f_id=fenlei.id 
+  </select>
+  
+  <select id="showByPageHelper" resultMap="BaseResultMap2">
+   select *
+    from book,fenlei where book.f_id=fenlei.id 
+  </select>
 </mapper>
