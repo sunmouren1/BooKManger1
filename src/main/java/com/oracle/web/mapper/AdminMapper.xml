@@ -29,7 +29,7 @@
       password = #{password,jdbcType=VARCHAR},
       touxiang = #{touxiang,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
-  </update>
+  </update> 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, name, phone, userName, password, touxiang
     from admin
