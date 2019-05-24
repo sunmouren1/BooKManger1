@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oracle.web.mapper.BookMapper">
+  <resultMap id="BaseResultMap" type="com.oralce.web.bean.Book">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="jiage" jdbcType="VARCHAR" property="jiage" />
+    <result column="chubanshe" jdbcType="VARCHAR" property="chubanshe" />
+    <result column="zhuangtai" jdbcType="VARCHAR" property="zhuangtai" />
+    <result column="jieshuren" jdbcType="VARCHAR" property="jieshuren" />
+    <result column="fenlei" jdbcType="VARCHAR" property="fenlei" />
+    <result column="f_id" jdbcType="INTEGER" property="fId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from book
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.oralce.web.bean.Book">
+    insert into book (id, name, jiage, 
+      chubanshe, zhuangtai, jieshuren, 
+      fenlei, f_id)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{jiage,jdbcType=VARCHAR}, 
+      #{chubanshe,jdbcType=VARCHAR}, #{zhuangtai,jdbcType=VARCHAR}, #{jieshuren,jdbcType=VARCHAR}, 
+      #{fenlei,jdbcType=VARCHAR}, #{fId,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.oralce.web.bean.Book">
+    update book
+    set name = #{name,jdbcType=VARCHAR},
+      jiage = #{jiage,jdbcType=VARCHAR},
+      chubanshe = #{chubanshe,jdbcType=VARCHAR},
+      zhuangtai = #{zhuangtai,jdbcType=VARCHAR},
+      jieshuren = #{jieshuren,jdbcType=VARCHAR},
+      fenlei = #{fenlei,jdbcType=VARCHAR},
+      f_id = #{fId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, jiage, chubanshe, zhuangtai, jieshuren, fenlei, f_id
+    from book
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, jiage, chubanshe, zhuangtai, jieshuren, fenlei, f_id
+    from book
+  </select>
+  
+</mapper>
