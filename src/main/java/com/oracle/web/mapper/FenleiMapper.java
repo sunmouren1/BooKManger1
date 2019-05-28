@@ -4,6 +4,7 @@ import com.oralce.web.bean.Fenlei;
 import java.util.List;
 
 public interface FenleiMapper {
+	
     int deleteByPrimaryKey(Integer id);
 
     int insert(Fenlei record);
