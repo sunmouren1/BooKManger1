@@ -19,38 +19,7 @@
 <script type="text/javascript" src="js/ajax.js"></script>
 </head>
  <script type="text/javascript">
- $(function() {
-		$("#login").bootstrapValidator({
 
-			feedbackIcons : {
-				valid : "glyphicon glyphicon-ok",
-				invalid : "glyphicon glyphicon-remove",
-				validating : "glyphicon glyphicon-refresh"
-			},
-			fields : {
-				name : {
-					validators : {
-						notEmpty : {
-							message : '分类名称不能为空'
-						},
-						regexp : {
-							regexp : /^[\u0391-\uFFE5]{2,10}$/,
-							message : '分类名称必须是2~10个汉字'
-						},
-					}
-				},
-				 
-				
-
-				
-			
-				
-			}
-
-		})
-
-	});
- 
  </script>
 <body background="imgs/3.jpg">
   <div class="container">
@@ -76,25 +45,6 @@
 		</div>
 
 	</div>
-	<!--  <form action="Fenleiservlet?action=addFenlei" method="post">
-		<table align="center" width="200px" height="100px" border="1px"
-			cellspacing="0" bordercolor="silver">
-			<caption align="top">
-				<h1>
-					<font color="red">添加分类</font>
-				</h1>
-				<hr size="2px" color="red" width="600px" />
-			</caption>
-			<tr align="center">
-				<td>请输入分类的名字:</td>
-				<td><input type="text" name="name" /></td>
-			</tr>
-			<tr align="center">
-				<td colspan="2"><input type="submit" value="添加" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-					type="reset" value="重填" /></td>
-			</tr>
-		</table>
-	</form>
-	-->
+
 </body>
 </html>

@@ -8,33 +8,6 @@
 <title>修改分类</title>
    <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript">
-    window.onload=function(){
-    	var select=document.getElementById("fenleiList");
-    	ajax({
-    		method:"POST",
-    		url:"Fenleiservlet",
-    		params:"action=UpdateFenlei",
-    		type:"xml",
-    		success:function(date){
-    				//var content=http.responseXML;
-    				var names=date.getElementsByTagName("name");
-    				for(var i=0;i<names.length;i++){
-    					var name=names[i];
-    					var opt=document.createElement("option");
-    					var value;
-    					if(window.addEventListener){
-    						value=name.textContent;
-    					}else{
-    						value=text;
-    					}
-    					opt.innerHTML=value;
-        				opt.value=value;
-        				select.appendChild(opt);
-    				}
-    		}
-    	});
-    	
-        }
     </script>
 </head>
 <body background="imgs/3.jpg">
