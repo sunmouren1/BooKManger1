@@ -120,7 +120,6 @@ window.onload = function() {
 
 			}
 		}
-		;
 
 		str = str.slice(0, str.length - 1);
 
@@ -128,9 +127,10 @@ window.onload = function() {
 
 		if (queren == true) {
 
-			location.href = "deleteBook&ids=" + str;
+		href = "BookHandler/delete/ids=" + str;
 
 		} else {
+			
 
 			location.reload();
 		}
@@ -284,7 +284,7 @@ h1 {
 					<td>分类Id</td>
 
 					
-
+                   <td>删除</td>
 					<td>修改</td>
 
 				</tr>
@@ -300,7 +300,7 @@ h1 {
 						<td>${s.jieshuren }</td>
 						<td>${s.fenlei}</td>
 						<td>${s.fId}</td>
-						
+							<td><a href="deleteBook/${s.id}" class="deleteId  btn btn-danger ">删除</a></td>
 
 						<td><a href="book/${s.id}" class=" btn btn-info">修改</a></td>
 
@@ -308,8 +308,8 @@ h1 {
 					
 				</c:forEach>
 
-<td algin="center" colspan="10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<button id="deleteStudent" class="btn btn-danger btn-sm">删除</button>
+          <td algin="center" colspan="11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button id="deleteStudent" class="  btn btn btn-danger btn-sm">批量删除</button>
 				</td>
 			</table>
 

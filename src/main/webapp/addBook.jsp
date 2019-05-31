@@ -37,6 +37,21 @@
 							regexp : /^[\u0391-\uFFE5]{1,20}$/,
 							message : '书名必须是1~20个汉字'
 						},
+
+					 	remote:{
+					 		
+					 		url:"validateadminName.action",
+					 		message:'用户名已存在，请重新输入',
+					 		delay:500,
+					 		type:'POST',
+					 		data:function(validator){
+					 			return {
+					 			adminName:$("input[name=adminName]").val(),
+					 			}
+					 		}
+					 		
+					 	}
+					 	
 					}
 				},
 				jiage : {
@@ -108,7 +123,7 @@
 
 
 </head>
-<body background="imges/10.jpg">
+<body background="./imges/10.jpg">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
@@ -152,7 +167,7 @@
 				<div>
 					<label>分类Id</label> 
 					
-					 <select name="fenLei" class="form-control">
+					 <select name="fId" class="form-control">
 					 
 					  <c:forEach items="${flist}" var="f">
 					  

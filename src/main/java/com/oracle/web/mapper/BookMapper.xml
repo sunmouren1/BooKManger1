@@ -71,4 +71,14 @@
    select *
     from book,fenlei where book.f_id=fenlei.id 
   </select>
+  <delete id="deleteByIds" parameterType="java.lang.String">
+  delete from book where
+
+     <foreach collection="array" item="ids" open="(" separator=","
+			close=")">
+			#{ids}
+		</foreach>
+
+  
+  </delete>
 </mapper>

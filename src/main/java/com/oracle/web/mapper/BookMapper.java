@@ -19,4 +19,6 @@ public interface BookMapper {
 	List<SubBook> selectAllWithOneSQL();
 
 	List<SubBook> showByPageHelper();
+
+	int[] deleteByIds(String ids);
 }
