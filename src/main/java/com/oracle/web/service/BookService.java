@@ -1,6 +1,9 @@
 package com.oracle.web.service;
 
+import java.io.FileInputStream;
 import java.util.List;
+
+import javax.servlet.ServletOutputStream;
 
 import com.oralce.web.bean.Book;
 import com.oralce.web.bean.SubBook;
@@ -13,7 +16,7 @@ public interface BookService {
 
 	List<SubBook> list();
 
-	int[] delete(String ids);
+	
 
 	
 	Book queryOne(Integer id);
@@ -23,6 +26,18 @@ public interface BookService {
 	pageBean<SubBook> showByPage(Integer pageNow);
 
 	void delete(Book book);
+
+	Book validateName(String name);
+
+	List<Book> list2();
+
+	List<Book> queryBooks(String[] arr);
+
+	List<SubBook> findName(String name);
+
+	void delete(String[] arr);
+
+	//void exportAls(FileInputStream fileInputStream, ServletOutputStream outputStream);
 
 	
 

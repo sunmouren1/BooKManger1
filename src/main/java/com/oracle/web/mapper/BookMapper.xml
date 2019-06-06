@@ -72,13 +72,37 @@
     from book,fenlei where book.f_id=fenlei.id 
   </select>
   <delete id="deleteByIds" parameterType="java.lang.String">
-  delete from book where
+  delete from book where id in
 
      <foreach collection="array" item="ids" open="(" separator=","
 			close=")">
 			#{ids}
 		</foreach>
 
-  
   </delete>
+  <select id="validateName" parameterType="java.lang.String" resultMap="BaseResultMap">
+  select name from  book b where b.name=#{name}
+ 
+  </select>
+  <select id="list2" resultMap="BaseResultMap">
+  select * from book
+  </select>
+  
+  <select id="queryBooks"  parameterType="java.lang.String" resultMap="BaseResultMap">
+  select * from book where id in
+  
+   <foreach collection="array" item="ids" index="no" open="(" separator="," 
+			close=")" >
+			#{ids}
+		</foreach>
+  </select>
+  <select id="findName" parameterType="java.lang.String" resultMap="BaseResultMap2">
+        SELECT * FROM book
+        <where>
+            <if test="name != null and name != ''">
+                AND name LIKE CONCAT(CONCAT('%',#{name},'%'))
+            </if>
+        </where>
+        ORDER BY id
+    </select>
 </mapper>

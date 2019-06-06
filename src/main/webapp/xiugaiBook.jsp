@@ -32,6 +32,7 @@ h2 {
 <body background="imgs/3.jpg">
 	<center>
 	<h2>修改图书</h2>
+	
 		<form class="form-horizontal" action="updatebook" method="post">
 			<input type="hidden" value="PUT" name="_method"> 
 			

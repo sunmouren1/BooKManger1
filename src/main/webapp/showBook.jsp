@@ -127,8 +127,15 @@ window.onload = function() {
 
 		if (queren == true) {
 
-		href = "BookHandler/delete/ids=" + str;
+			//location.href =	 "delete/" + str;
+		 var  $url= "delete/" + str;
 
+				
+			 $("#deleteForm").attr("action",$url);
+			 
+			 $("#deleteForm").submit();
+			 
+			 return false;
 		} else {
 			
 
@@ -145,7 +152,7 @@ window.onload = function() {
 
 		if (queren == true) {
 
-			window.location.href = "OutPutBookServlet?action=all";
+			window.location.href = "outAll";
 		}
 
 	};
@@ -190,7 +197,7 @@ window.onload = function() {
 		if (queren == true) {
 
 			// window.location.href = "OutPutUserServlet?action=outSelect&ids="+ str;
-			window.location.href = "OutPutBookServlet?action=outputSelect&ids="
+			location.href = "outputSelect/"
 					+ str;
 		}
 
@@ -214,6 +221,7 @@ $(function(){
 });
 
 
+    
  </script>
 <style type="text/css">
 
@@ -251,6 +259,81 @@ h1 {
 }
 </style>
 <body background="imges/1.jpg">
+<div class="col col-md-4  col-md-offset-4" id="div2">
+			<ul class="nav nav-tabs">
+				<li><a href="addUI">添加图书</a></li>
+				<div class="dropdown  col-md-offset-3">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><font
+			size="4" face="幼圆"><span class="glyphicon glyphicon-search">高级搜索</span></font><span
+			class="caret"></span></a>
+		<div class="col-md-1 "></div>
+		<br>
+		<ul class="dropdown-menu dropdown-menu-left" role="menu">
+			<li>
+				<form action="showBookByWhere" class="form-horizontal">
+			
+					<!-- 隐藏域，用来传递action -->
+					<input type="hidden"  name="action" value="showBookByWhere">
+					<div class="control-group   ">
+						<br> <label class="col-md-4">分类： </label>
+						<div class="col-sm-7">
+							<select  name="fId" id="fId" class="form-control" value="${b.fId}" >
+			  <c:forEach items="${flist}" var="f">
+			
+			    <c:if test="${f.id==fenLei.id}">
+			   
+			      <option value="${f.id}" selected="selected" >${f.name}</option>
+			     </c:if>
+			     <c:if test="${f.id!=fenLei.id}">
+			  <option value="${f.id}">${f.name}</option>
+			  </c:if>
+			  
+			  </c:forEach>
+				</select>	<br>
+						</div>
+					</div>
+					<div class="control-group  ">
+						<br>
+						<label class="col-sm-4 ">书名:</label>
+						<div class="col-sm-7 ">
+							<input name="name" type="text" class="form-control  input-sm" /><br>
+						</div>
+					</div>
+					<div class="control-group   ">
+						<br>
+						<label class="col-sm-4"> 出版社:</label>
+						<div class="col-sm-7">
+							<input name="chubanshe" type="text" class="form-control  input-sm" /><br>
+						</div>
+					</div>
+					<div class="control-group   ">
+						<label class="col-sm-4 ">借书人:</label>
+						<div class="col-sm-7">
+							<input name="jieshuren" type="text"
+								class="form-control  input-sm" /><br>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="col-sm-4"> 状态:</label>
+						<div class="col-sm-7">
+							<input name="zhuangtai" type="text"
+								class="form-control  input-sm" /><br>
+						</div>
+					</div>
+
+
+					<div class="control-group  ">
+						<label class="col-sm-4 "></label>
+						<div class="controls ss">
+							<button type="submit" class="btn   btn-warning ">
+								<span class="glyphicon glyphicon-search"></span> 开始搜索
+							</button>
+						</div>
+					</div>
+				</form>
+			</li>
+		</ul>
+	</div>
 	<div class="container">
 		<caption align="top">
 			<h1 align="center">
@@ -309,7 +392,7 @@ h1 {
 				</c:forEach>
 
           <td algin="center" colspan="11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<button id="deleteStudent" class="  btn btn btn-danger btn-sm">批量删除</button>
+					<button id="deleteStudent" class="deleteId btn  btn-danger btn-sm">批量删除</button>
 				</td>
 			</table>
 
@@ -330,7 +413,7 @@ h1 {
 				</center>
 			<div>
 			<br>
-			 <p align="center"><a href="addUI" class="btn btn-info btn-xs">添加图书</a></p>
+			
 			<p>
 			<center>
 				第${pb.pageNow }页/共${pb.pages }页 <br /> &nbsp;&nbsp;&nbsp;&nbsp;

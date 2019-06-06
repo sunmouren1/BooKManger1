@@ -1,7 +1,10 @@
 package com.oracle.web.service.impl;
 
 
+import java.io.FileInputStream;
 import java.util.List;
+
+import javax.servlet.ServletOutputStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -93,11 +96,40 @@ public class BookServiceimpl implements BookService {
 
 	@Override
 	@Transactional
-	public int[] delete(String ids) {
+	public void delete(String[] arr) {
 		// TODO Auto-generated method stub
 		
-		return this.BookMapper.deleteByIds(ids);
+		 this.BookMapper.deleteByIds(arr);
 	}
+
+	@Override
+	@Transactional
+	public Book validateName(String name) {
+		// TODO Auto-generated method stub
+		return  this.BookMapper.validateName(name);
+	}
+
+	@Override
+	@Transactional
+	public List<Book> list2() {
+		// TODO Auto-generated method stub
+		return this.BookMapper.list2();
+	}
+
+	@Override
+	@Transactional
+	public List<Book> queryBooks(String[] arr) {
+		// TODO Auto-generated method stub
+		return this.BookMapper.queryBooks(arr);
+	}
+
+	@Override
+	@Transactional
+	public List<SubBook> findName(String name) {
+		// TODO Auto-generated method stub
+		return this.BookMapper.findName(name);
+	}
+
 
 	
 

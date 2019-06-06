@@ -20,5 +20,15 @@ public interface BookMapper {
 
 	List<SubBook> showByPageHelper();
 
-	int[] deleteByIds(String ids);
+	
+
+	Book validateName(String name);
+
+	List<Book> list2();
+
+	List<Book> queryBooks(String[] arr);
+
+	List<SubBook> findName(String name);
+
+	void deleteByIds(String[] arr);
 }
