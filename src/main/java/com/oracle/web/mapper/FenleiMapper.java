@@ -10,7 +10,7 @@ public interface FenleiMapper {
 
     int deleteByExample(FenleiExample example);
 
-    int deleteByPrimaryKey(Integer fid);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(com.oralce.web.bean.Fenlei record);
 
@@ -18,7 +18,7 @@ public interface FenleiMapper {
 
     List<Fenlei> selectByExample(FenleiExample example);
 
-    Fenlei selectByPrimaryKey(Integer fid);
+    Fenlei selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Fenlei record, @Param("example") FenleiExample example);
 
@@ -36,7 +36,7 @@ public interface FenleiMapper {
 
 	int counts();
 
-	int yanzhengAddFenlei2(Integer fid);
+	int yanzhengAddFenlei2(Integer id);
 
 	List<Fenlei> selectOutPutIds(List<Integer> list);
 
