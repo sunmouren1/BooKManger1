@@ -1,7 +1,8 @@
 package com.oracle.web.mapper;
 
-import com.oralce.web.bean.Admin;
 import java.util.List;
+
+import com.oracle.web.bean.Admin;
 
 public interface AdminMapper {
     int deleteByPrimaryKey(Integer id);

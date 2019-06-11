@@ -1,4 +1,4 @@
-package com.oralce.web.bean;
+package com.oracle.web.bean;
 
 public class User {
     private Integer id;

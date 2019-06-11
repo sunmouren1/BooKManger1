@@ -17,6 +17,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.CellStyle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -25,10 +26,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import com.oracle.web.bean.Fenlei;
+import com.oracle.web.bean.PageBean;
 import com.oracle.web.service.FenleiService;
-import com.oralce.web.bean.Fenlei;
-import com.oralce.web.bean.PageBean;
  
  
 @Controller
@@ -44,7 +44,7 @@ public class  FenLeiHandler{
 
 	
 		
-			List<com.oralce.web.bean.Fenlei> list = fenleiService.list();
+			List<com.oracle.web.bean.Fenlei> list = fenleiService.list();
 
 
 			System.out.println(list);
@@ -229,7 +229,7 @@ public class  FenLeiHandler{
 			sheet.setColumnWidth(7, 15 * 256); 
 
 			HSSFCellStyle style = Workbook.createCellStyle();
-			style.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+			style.setAlignment(CellStyle.ALIGN_CENTER);
 			HSSFFont font = Workbook.createFont();
 			font.setBold(true);
 			font.setColor(HSSFColor.DARK_RED.index);
@@ -242,7 +242,7 @@ public class  FenLeiHandler{
 				cell.setCellValue(title[i]);
 			}
 			HSSFCellStyle style1 = Workbook.createCellStyle();
-			style1.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+			style1.setAlignment(CellStyle.ALIGN_CENTER);
 			for (int i = 0; i < list.size(); i++) { 
 
 				HSSFRow row1 = sheet.createRow(i + 1);

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.oracle.web.bean.Admin;
 import com.oracle.web.service.AdminService;
-import com.oralce.web.bean.Admin;
 
 @Controller
 @Scope(value="prototype")
@@ -50,7 +50,7 @@ public class AdminHandler {
 		if(a!=null){
 			response.getWriter().write("{\"valid\":\"false\"}");
 		}else{
-			response.getWriter().write("{\"valid\":\"true\"}"); //²»´æÔÚ
+			response.getWriter().write("{\"valid\":\"true\"}"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		}
 		return NONE;
 		

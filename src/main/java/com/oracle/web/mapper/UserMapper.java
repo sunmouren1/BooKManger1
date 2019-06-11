@@ -1,7 +1,8 @@
 package com.oracle.web.mapper;
 
-import com.oralce.web.bean.User;
 import java.util.List;
+
+import com.oracle.web.bean.User;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);

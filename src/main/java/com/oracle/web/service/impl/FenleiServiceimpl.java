@@ -9,12 +9,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.github.pagehelper.page.PageMethod;
+import com.oracle.web.bean.Fenlei;
+import com.oracle.web.bean.FenleiExample;
+import com.oracle.web.bean.PageBean;
+import com.oracle.web.bean.FenleiExample.Criteria;
 import com.oracle.web.mapper.FenleiMapper;
 import com.oracle.web.service.FenleiService;
-import com.oralce.web.bean.Fenlei;
-import com.oralce.web.bean.FenleiExample;
-import com.oralce.web.bean.FenleiExample.Criteria;
-import com.oralce.web.bean.PageBean;
 
 @Service
 public class FenleiServiceimpl implements FenleiService {
@@ -78,7 +79,7 @@ public class FenleiServiceimpl implements FenleiService {
 		PageBean<Fenlei> pb = new PageBean<Fenlei>();
 
 		// 当前页的数据
-		PageHelper.startPage(pageNow, 5);
+		PageMethod.startPage(pageNow, 5);
 
 		// 已经是分页好的数据了
 		List<Fenlei> list = this.fenleiMapper.selectAllByPageHelper();

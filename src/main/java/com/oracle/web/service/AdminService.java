@@ -1,6 +1,6 @@
 package com.oracle.web.service;
 
-import com.oralce.web.bean.Admin;
+import com.oracle.web.bean.Admin;
 
 public interface AdminService {
 

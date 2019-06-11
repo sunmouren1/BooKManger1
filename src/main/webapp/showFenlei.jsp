@@ -322,11 +322,7 @@ width: 860px;
 												</li>
 									</c:if>
 									 
-						 <!-- 分页2种情况
-			               1.页数小于10
-			                   2.页数大于10
-			                         -->
-							 
+			
 									<c:choose>
 										<c:when test="${pb.pages<=10 }">
 											<c:set var="begin" value="1"></c:set>

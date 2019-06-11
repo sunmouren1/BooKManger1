@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.oracle.web.mapper.AdminMapper">
-  <resultMap id="BaseResultMap" type="com.oralce.web.bean.Admin">
+  <resultMap id="BaseResultMap" type="com.oracle.web.bean.Admin">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
@@ -13,7 +13,7 @@
     delete from admin
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.oralce.web.bean.Admin">
+  <insert id="insert" parameterType="com.oracle.web.bean.Admin">
     insert into admin (id, name, phone, 
       userName, password, touxiang
       )
@@ -21,7 +21,7 @@
       #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{touxiang,jdbcType=VARCHAR}
       )
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.oralce.web.bean.Admin">
+  <update id="updateByPrimaryKey" parameterType="com.oracle.web.bean.Admin">
     update admin
     set name = #{name,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},

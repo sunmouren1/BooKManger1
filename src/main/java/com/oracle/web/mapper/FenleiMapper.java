@@ -1,18 +1,19 @@
 package com.oracle.web.mapper;
 
-import com.oralce.web.bean.Fenlei;
-import com.oralce.web.bean.FenleiExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+import com.oracle.web.bean.Fenlei;
+import com.oracle.web.bean.FenleiExample;
+
 public interface FenleiMapper {
-    long countByExample(com.oralce.web.bean.FenleiExample example);
+    long countByExample(com.oracle.web.bean.FenleiExample example);
 
     int deleteByExample(FenleiExample example);
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(com.oralce.web.bean.Fenlei record);
+    int insert(com.oracle.web.bean.Fenlei record);
 
     int insertSelective(Fenlei record);
 

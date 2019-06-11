@@ -1,4 +1,4 @@
-package com.oralce.web.bean;
+package com.oracle.web.bean;
 
 import java.util.ArrayList;
 import java.util.List;
