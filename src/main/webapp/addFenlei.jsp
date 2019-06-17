@@ -93,7 +93,7 @@
 #div1 {
  
 	margin-top: 20px;
-   border:1px solid ;
+   border:2px solid ;
    border-color: pink; 
 }
 
@@ -112,8 +112,8 @@ label{
    font-size: 15px;
 }
 hr{
-border: 1px solid #D7E4E8;
- width: 400px;
+border: 1.5px solid red;
+ width: 500px;
  
  
 }

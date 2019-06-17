@@ -95,7 +95,7 @@
 <style>
 #div1 {
 	margin-top: 60px;
-	border: 1px solid #D7E4E8;
+	border: 2px solid #D7E4E8;
 	border-color: pink;
 }
 
@@ -121,7 +121,7 @@ label {
 }
 
 hr {
-	border: 1px solid #D7E4E8;
+	border: 1.5px solid red;
 	width: 500px;
 }
 
