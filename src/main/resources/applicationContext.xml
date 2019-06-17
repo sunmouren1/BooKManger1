@@ -16,8 +16,9 @@
 			expression="org.springframework.web.bind.annotation.ControllerAdvice" />
 	</context:component-scan>
 	<!-- 引入jdbc.propretes -->
+			<context:property-placeholder location="classpath:jdbc.properties" />
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="user" value="${jdbc.userName}"></property>
+		<property name="user" value="${jdbc.user}"></property>
 		<property name="password" value="${jdbc.password}"></property>
 		<property name="jdbcUrl" value="${jdbc.url}"></property>
 		<property name="driverClass" value="${jdbc.driverClass}"></property>

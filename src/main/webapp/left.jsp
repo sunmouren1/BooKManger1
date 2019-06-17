@@ -39,8 +39,7 @@ h2 {
 		<div>
 			
 				<li><a href="addFenlei.jsp" target="right" ><span class="ui-icon ui-icon-circle-plus"></span>添加分类</a></li>
-				<li><a href="UpdateFenlei.jsp" target="right"   ><span class="ui-icon ui-icon-wrench"></span>修改分类</a></li>
-				<li><a href="Fenleiservlet?action=showFenleiByPage" target="right"><span class="ui-icon ui-icon-copy"></span>查看分类</a></li>
+				<li><a href="fenleis/1" target="right"><span class="ui-icon ui-icon-copy"></span>查看分类</a></li>
 				
 
 

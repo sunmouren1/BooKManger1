@@ -6,58 +6,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
-<script type="text/javascript" src="bootstrap/js/jquery.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-<link rel="stylesheet" href="bootstrap/css/bootstrapValidator.css" />
-<script type="text/javascript" src="bootstrap/js/bootstrapValidator.js"></script>
-
+<link rel="stylesheet"
+	href="http://localhost/BooKManger1/bootstrap/css/bootstrap.css" />
+<script type="text/javascript"
+	src="http://localhost/BooKManger1/bootstrap/js/jquery.js"></script>
+<script type="text/javascript"
+	src="http://localhost/BooKManger1/bootstrap/js/bootstrap.js"></script>
+<link rel="stylesheet"
+	href="http://localhost/BooKManger1/bootstrap/css/bootstrapValidator.css" />
+<script type="text/javascript"
+	src="http://localhost/BooKManger1/bootstrap/js/bootstrapValidator.js"></script>
 <title>修改分类</title>
-<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="/BookManger1/js/ajax.js"></script>
 <script>
 	$(function() {
-		$(".form-horizontal").bootstrapValidator({
-			feedbackIcons : {
-				valid : 'glyphicon glyphicon-ok',
-				invalid : 'glyphicon glyphicon-remove',
-				validating : 'glyphicon glyphicon-refresh'
 
-			},
-			fields : {
+		$(".form-horizontal")
+				.bootstrapValidator(
+						{
+							feedbackIcons : {
+								valid : 'glyphicon glyphicon-ok',
+								invalid : 'glyphicon glyphicon-remove',
+								validating : 'glyphicon glyphicon-refresh'
 
-				fname : {
-					validators : {
+							},
+							fields : {
+								id : {
 
-						notEmpty : {
+									validators : {
 
-							message : '分类名不能为空'
-						},
+										callback : {
 
-						// threshold :  6 , 有6字符以上才发送ajax请求，（input中输入一个字符，插件会向服务器发送一次，设置限制，6字符以上才开始）
-						remote : {//ajax验证。server result:{"valid",true or false} 向服务发送当前input name值，获得一个json数据。例表示正确：{"valid",true}  
-							url : "http://localhost/Book/yzfenleiupdate",//验证地址
-							message : '该分类下已存在',//提示消息
-							delay : 500,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
-							type : 'GET',//请求方式
+											callback : function(value,
+													validator) {
 
-							//自定义提交数据，默认值提交当前input value
-							data : function(validator) {
-								return {
-									action : "yzfenleiupdate",
-									fname : $("#fname").val()
+												if (id.value == "----请选择----") {
+													return {
+														valid : false,
+
+														message : '必须选择',
+													}
+
+												}
+												return true;
+
+											}
+										}
+									}
+
+								},
+								name : {
+									validators : {
+
+										notEmpty : {
+
+											message : '分类名不能为空'
+										},
+
+										
+										remote : {//ajax验证
+											url : "http://localhost/BooKManger1/yzfenleiupdate",//验证地址
+											//提示消息
+											message : '该分类已存在或该分类下有图书 ',
+											delay : 500,
+											type : 'GET',
+
+							
+											data : function(validator) {
+												return {
+
+													name : $("#name").val(),
+													id : $("#id").val()
+												}
+											}
+
+										}
+
+									}
 
 								}
+
 							}
 
-						}
-
-					}
-
-				}
-
-			}
-
-		})
+						});
 
 	});
 </script>
@@ -65,6 +96,7 @@
 #div1 {
 	margin-top: 60px;
 	border: 1px solid #D7E4E8;
+	border-color: pink;
 }
 
 form {
@@ -99,8 +131,8 @@ hr {
 }
 </style>
 </head>
-<body>
-	<div class="container-fluid" id="div9">
+<body background="http://localhost/BooKManger1/imgs/3.jpg">
+	<div class="container-fluid" id="div9" >
 		<c:if test="${!empty mag }">
 			<script>
 				alert("${mag}");
@@ -110,20 +142,20 @@ hr {
 		<!--  <marquee align="texttop" behavior="slide" scrollamount="60"
 			direction="up">-->
 		<div class="col col-md-8 col-md-offset-1" id="div1">
-			<h2 class="text-center text-info">修改分类</h2>
+			<h2 class="text-center text-info"><font color="red">修改分类</font></h2>
 			<hr>
 			<table>
 				<tr>
 					<td>
 						<form class="form-horizontal"
-							action="http://localhost/Book/fenleiupdate"
-							method="post">
-							<input type='hidden' name='fid' value="${f.fid }" />
+							action="http://localhost/BooKManger1/fenleiupdate" method="post">
+							<input type="hidden" name="_method" value="PUT"> <input
+								type="hidden" name="id" value="${f.id }" id="id" />
 
 							<div class="form-group f1">
-								<label class="col-sm-5  control-label text-info">请输入新的分类的名字:</label>
+								<label class="col-sm-5  control-label text-info"><font color="red">请输入新的分类的名字:</font></label>
 								<div class="col-sm-4">
-									<input type="text" name="fname" value="${f.fname }"
+									<input type="text" name="name" value="${f.name }" id="name"
 										class="form-control input-md" />
 								</div>
 							</div>
@@ -136,9 +168,8 @@ hr {
 
 								<div class="col-sm-2    ">
 
-									<a
-										href="http://localhost/Book/fenleis/1/${pageNow }"
-										class="btn btn-info ">返回 <span
+									<a href="http://localhost/BooKManger1/fenleis/1"
+										class="btn btn-success ">返回 <span
 										class="glyphicon glyphicon-repeat"></span></a>
 
 								</div>

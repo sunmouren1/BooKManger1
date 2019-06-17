@@ -1,16 +1,3 @@
-
-
-jQuery.validator.addMethod("isMobile", function(value, element) {
-		var length = value.length;
-		var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
-		return this.optional(element) || (length == 11 && mobile.test(value));
-	}, "请正确填写您的手机号码");
-
-
-
-
-
-
 jQuery.validator.addMethod('idCard2', function (value, element) {
     var vcity = {
         11: "北京", 12: "天津", 13: "河北", 14: "山西", 15: "内蒙古",
@@ -24,7 +11,7 @@ jQuery.validator.addMethod('idCard2', function (value, element) {
     // 判断是否为空
     isEmpty = function(card){
         if (/^\s*$/.test(card) === true) {
-            return true;
+            return false;
         }
     }
     //检查号码是否符合规范，包括长度，类型  
@@ -162,19 +149,4 @@ jQuery.validator.addMethod('idCard2', function (value, element) {
     }
 
     return true;
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+},"请输入正确的身份证号"); 

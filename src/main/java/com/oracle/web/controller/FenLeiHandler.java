@@ -54,6 +54,7 @@ public class  FenLeiHandler{
 
 
 			return "showFenlei";
+			
 		}
 
 	@RequestMapping(value="/fenlei",method=RequestMethod.POST)
@@ -67,12 +68,12 @@ public class  FenLeiHandler{
 	
 	
 		@RequestMapping(value = "/yanzhengAddFenlei", method = RequestMethod.GET)
-		public void yanzhengAddFenlei(@RequestParam(value = "name") String name, @RequestParam(value = "id") String id,
+		public void yanzhengAddFenlei(@RequestParam(value = "name") String name,
 				HttpServletResponse response) throws IOException {
 			
 			 
 			response.setContentType("text/html;charset=UTF-8");
-			Fenlei f = this.fenleiService.yanzhengAddFenlei(name, id);
+			Fenlei f = this.fenleiService.yanzhengAddFenlei(name);
 
 			
 			if (f == null) {
@@ -121,20 +122,22 @@ public class  FenLeiHandler{
 	
 	
 	@RequestMapping(value = "/fenlei/{id}", method = RequestMethod.GET)
-	public String updateUI(@PathVariable("id") String id1, HttpSession session) {
+	public String updateUI(@PathVariable("id") String fid1, HttpSession session) {
 
-          Integer id=Integer.parseInt(id1);
-		Fenlei fenlei = fenleiService.selectByPrimaryKey(id);
+          Integer fid=Integer.parseInt(fid1);
+		Fenlei fenlei = fenleiService.selectByPrimaryKey(fid);
 
 		List<Fenlei> flist = this.fenleiService.selectFenleiAll();
 		session.setAttribute("flist", flist);
 	 
 		session.setAttribute("f", fenlei);
  
-		return "updatefl";
+		return "UpdateFenlei";
 
 
 	}
+	
+
 	
 	@RequestMapping(value = "/fenleiupdate", method = RequestMethod.PUT)
 	public String update(Fenlei fenlei) {
@@ -151,7 +154,7 @@ public class  FenLeiHandler{
 	@RequestMapping(value = "/fenleis/{pageNow}", method = RequestMethod.GET)
 	public String list(@PathVariable(value = "pageNow") Integer pageNow, HttpServletRequest request) {
 
-
+     System.out.println(pageNow);
 
 
 		if (pageNow == null || pageNow < 1) {

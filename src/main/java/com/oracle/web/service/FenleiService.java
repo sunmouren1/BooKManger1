@@ -11,7 +11,6 @@ import com.oracle.web.bean.PageBean;
 
 public interface FenleiService {
 
-	List<Fenlei> selectFenleiAll();
 
 	List<Fenlei> list();
 
@@ -36,6 +35,8 @@ public interface FenleiService {
 	List<Fenlei> outPutFenleiIds(String ids1);
 
 	Fenlei yanzhengAddFenlei(String name, String id);
+
+	List<Fenlei> selectFenleiAll();
 
 	 
 

@@ -11,23 +11,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Bootstrap -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="http://localhost/BooKManger1/bootstrap/css/bootstrap.css" />
+<script type="text/javascript"
+	src="http://localhost/BooKManger1/bootstrap/js/jquery.js"></script>
+<script type="text/javascript"
+	src="http://localhost/BooKManger1/bootstrap/js/bootstrap.js"></script>
+<link rel="stylesheet"
+	href="http://localhost/BooKManger1/bootstrap/css/bootstrapValidator.css" />
+<script type="text/javascript"
+	src="http://localhost/BooKManger1/bootstrap/js/bootstrapValidator.js"></script>
 
 <title>查看所有分类</title>
 
-<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="http://localhost/BooKManger1/js/jquery-1.8.3.js"></script>
 <script>
 
 	    $(function(){  
@@ -108,7 +107,7 @@
 
 					}
 					if(m>1){
-						alert("亲,分类只支持一次删除一个(^-^)！");
+						alert("分类只支持一次删除一个,请重新勾选");
 						return;
 					}
 				}
@@ -116,10 +115,10 @@
 				//alert(str);
           
 			 
-				var flage = confirm("你确定删除所勾选的分类吗？");
+				var flage = confirm("确定删除所勾选的分类吗？");
 				if (flage == true) {//确定
 					//拿到请求地址
-					var $url = "http://localhost/Book/fenlei_delete/"+ str;
+					var $url = "http://localhost/BooKManger1/fenlei_delete/"+ str;
 
 					//alert($url);
 					//拿到表单
@@ -131,7 +130,7 @@
 				} else {//取消
 
 					 
-					window.location.href = "http://localhost/Book/fenleis/1";
+					window.location.href = "http://localhost/BooKManger1/fenleis/1";
 
 				}
 			}
@@ -170,27 +169,27 @@
 				str = str.slice(0, str.length - 1);
 				 
 
-				var flag = confirm("你确定导出所勾选的分类信息吗？");
+				var flag = confirm("确定导出所勾选的分类信息吗？");
 				if (flag == true) {//确定
-					window.location.href = "http://localhost/Book/outPutFenLei/" + str;
+					window.location.href = "http://localhost/BooKManger1/outPutFenLei/" + str;
 
 				} else {//取消
 					
-					window.location.href = "http://localhost/Book/fenlei1";
+					window.location.href = "http://localhost/BooKManger1/fenleis/1";
 				}
 			}
 		};
 		//导出全部
 		var outAll=document.getElementById("outAll");
 		outAll.onclick = function() { 
-			var flag = confirm("你确定导出全部的分类信息吗？");
+			var flag = confirm("确定导出全部的分类信息吗？");
 			if (flag == true) {//确定
-				window.location.href ="http://localhost/Book/outPutFenLei/a";
+				window.location.href ="http://localhost/BooKManger1/outPutFenLei/a";
 			 
 		} else {//取消
 			
 		 
-			window.location.href = "http://localhost/Book/fenlei1/${pb.pageNow}";
+			window.location.href = "http://localhost/BooKManger1/fenleis/1";
 		} 
 		 
 		} 
@@ -213,6 +212,8 @@
  margin-top:30px;
     width:1000px;
   height:520px;
+  border:1px solid ;
+  border-color: pink;
 
 }
 #div3{
@@ -223,7 +224,7 @@
 #div1{
  
 	height: 840px;
-	 /* 	background-image: url("tu/t6.jpg"); */
+
 	background-size: cover;
  
 }
@@ -238,10 +239,9 @@ width: 860px;
  color:#337AB7;
  font-size: 15px; 
  }
- 
- 
+
 </style>
-<body   >
+<body background="http://localhost/BooKManger1/imgs/3.jpg" >
 	 
 	<c:if test="${!empty mag }">
 		<script>
@@ -254,11 +254,11 @@ width: 860px;
 	   
 		<div class="col col-md-5 " id="div3" >
 		 <ul class="nav nav-tabs">			 
-           <li role="presentation" class="active"><a id="selectAll"  href="#">全选</a></li>
-           <li role="presentation"><a id="selectNot" href="#">全不选</a></li>
-           <li role="presentation"><a id="fanxuan" href="#">反选</a></li>
-           <li role="presentation"><a id="outIds"  href="#">导出选中</a></li>
-           <li role="presentation"><a id="outAll" href="#">导出全部</a></li>
+           <li role="presentation" class="active"><a id="selectAll"  href="#"><font color="red">全选</font></a></li>
+           <li role="presentation"><a id="selectNot" href="#"><font color="red">全不选</font></a></li>
+           <li role="presentation"><a id="fanxuan" href="#"><font color="red">反选</font></a></li>
+           <li role="presentation"><a id="outIds"  href="#"><font color="red">导出选中</font></a></li>
+           <li role="presentation"><a id="outAll" href="#"><font color="red">导出全部</font></a></li>
           <%--  <li role="presentation"  class="dropdown"><a href="<%=base%>FenleiServlet?action=updatefl22&ausername=${ausername }"  role="menuitem" id="li">多项修改 </a></li> --%>
           
    			 
@@ -267,7 +267,7 @@ width: 860px;
 			<table  align="center" cellspacing="0" id="table1" >
 				<tr height="15%" valign="bottom">
 					<td align="center" colspan=2><font size="7" color="#337AB7"
-						face="宋体"><strong>查看所有分类</strong></font><br></td>
+						face="宋体"><strong><font color="red">查看所有分类</font></strong></font><br></td>
 				</tr>
 				<tr>
 					<td >
@@ -282,11 +282,11 @@ width: 860px;
 							<c:forEach items="${pb.beanList }" var="s" varStatus="ss">
 								<tr align='center'  >
 									<td>${ss.index+1}</td>
-									<td colspan="2">${s.fname}</td>
-									<td><input type="checkbox" name="ids" value="${s.fid}" /></td>
+									<td colspan="2">${s.name}</td>
+									<td><input type="checkbox" name="ids" value="${s.id}" /></td>
 									<td><a
-										href='http://localhost/Book/fenlei/${s.fid}'>
-											<input type="button" value="修改" class="btn btn-info btn-sm"/>
+										href="http://localhost/BooKManger1/fenlei/${s.id}">
+											<input type="button" value="修改" class="btn btn-success"/>
 									</a></td>
 								</tr>
 							</c:forEach>
@@ -310,14 +310,14 @@ width: 860px;
 						      
 								  <ul class="pagination ">
 								 
-										<li> <a href="http://localhost/Book/fenleis/1">首页</a>
+										<li> <a href="http://localhost/BooKManger1/fenleis/1">首页</a>
 									&nbsp;&nbsp;&nbsp;&nbsp;
 									 
 								 
 									</li>
 						 	<c:if test="${pb.pageNow>1 }">
 								 <li><a aria-label="Previous"
-											href="http://localhost/Book/fenleis/${pb.pageNow-1}"><span
+											href="http://localhost/BooKManger1/fenleis/${pb.pageNow-1}"><span
 												aria-hidden="ture">上一页</span></a>
 												</li>
 									</c:if>
@@ -350,7 +350,7 @@ width: 860px;
 												<li class="active"><span>${i }</span></li>
 											</c:when>
 											<c:otherwise>
-												<li><a href=" http://localhost/Book/fenleis/${i}">${i }</a>
+												<li><a href="http://localhost/BooKManger1/fenleis/${i}">${i }</a>
 													</li>
 											</c:otherwise>
 										</c:choose>
@@ -359,7 +359,7 @@ width: 860px;
 
 									<c:if test="${pb.pageNow<pb.pages }">
 										<li><a
-											href=" http://localhost/Book/fenleis/${pb.pageNow+1}"
+											href="http://localhost/BooKManger1/fenleis/${pb.pageNow+1}"
 											aria-label="Previous"><span aria-hidden="ture">下一页</span></a>
 										</li>
 									</c:if>
@@ -367,7 +367,7 @@ width: 860px;
 									<li>
 									 
 										<li>&nbsp;&nbsp;&nbsp;&nbsp;<a
-											href="http://localhost/Book/fenleis/${pb.pages}" >尾页
+											href="http://localhost/BooKManger1/fenleis/${pb.pages}" >尾页
 										</a>
 										</li>								 
 							 </ul>

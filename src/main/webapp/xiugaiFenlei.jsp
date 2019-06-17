@@ -25,7 +25,7 @@
 			},
 			fields : {
 
-				fname : {
+				name : {
 					validators : {
 
 						notEmpty : {
@@ -44,7 +44,7 @@
 							data : function(validator) {
 								return {
 									action : "yzfenleiupdate",
-									fname : $("#fname").val()
+									name : $("#name").val()
 
 								}
 							}
@@ -65,6 +65,7 @@
 #div1 {
 	margin-top: 60px;
 	border: 1px solid #D7E4E8;
+	border-color: pink;
 }
 
 form {
@@ -99,7 +100,7 @@ hr {
 }
 </style>
 </head>
-<body>
+<body background="imgs/3.jpg">
 	<div class="container-fluid" id="div9">
 		<c:if test="${!empty mag }">
 			<script>
@@ -110,7 +111,7 @@ hr {
 		<!--  <marquee align="texttop" behavior="slide" scrollamount="60"
 			direction="up">-->
 		<div class="col col-md-8 col-md-offset-1" id="div1">
-			<h2 class="text-center text-info">修改分类</h2>
+			<h2 class="text-center text-info"><font color="red">修改分类</font></h2>
 			<hr>
 			<table>
 				<tr>
@@ -118,12 +119,12 @@ hr {
 						<form class="form-horizontal"
 							action="http://localhost/Book/fenleiupdate"
 							method="post">
-							<input type='hidden' name='fid' value="${f.fid }" />
+							<input type='hidden' name='fid' value="${f.id }" />
 
 							<div class="form-group f1">
-								<label class="col-sm-5  control-label text-info">请输入新的分类的名字:</label>
+								<label class="col-sm-5  control-label text-info"><font color="red">请输入新的分类的名字:</font></label>
 								<div class="col-sm-4">
-									<input type="text" name="fname" value="${f.fname }"
+									<input type="text" name="fname" value="${f.name }"
 										class="form-control input-md" />
 								</div>
 							</div>
@@ -138,7 +139,7 @@ hr {
 
 									<a
 										href="http://localhost/Book/fenleis/1/${pageNow }"
-										class="btn btn-info ">返回 <span
+										class="btn btn-success ">返回 <span
 										class="glyphicon glyphicon-repeat"></span></a>
 
 								</div>

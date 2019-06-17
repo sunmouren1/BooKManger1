@@ -23,15 +23,6 @@ public class FenleiServiceimpl implements FenleiService {
 	@Autowired
 	private FenleiMapper fenleiMapper;
 	
-
-	@Override
-	@Transactional
-	public List<Fenlei> selectFenleiAll() {
-		// TODO Auto-generated method stub
-		FenleiExample example = new FenleiExample();
-		return this.fenleiMapper.selectByExample(example);
-	}
-
 	@Override
 	@Transactional
 	public List<Fenlei> list() {
@@ -56,9 +47,9 @@ public class FenleiServiceimpl implements FenleiService {
 
 	@Override
 	@Transactional
-	public Fenlei selectByPrimaryKey(Integer fid) {
+	public Fenlei selectByPrimaryKey(Integer id) {
 		// TODO Auto-generated method stub
-		return this.fenleiMapper.selectByPrimaryKey(fid);
+		return this.fenleiMapper.selectByPrimaryKey(id);
 	}
 	
 
@@ -111,14 +102,14 @@ public class FenleiServiceimpl implements FenleiService {
 
 	@Override
 	@Transactional
-	public Fenlei yanzhengAddFenlei(String fname) {
+	public Fenlei yanzhengAddFenlei(String name) {
 		// 添加,修改图书校验
 
 		// TODO Auto-generated method stub
 		FenleiExample example = new FenleiExample();
 		Criteria criteria = example.createCriteria();
 		 
-		criteria.andFnameEqualTo(fname);
+		criteria.andnameEqualTo(name);
 		List<Fenlei> list = this.fenleiMapper.selectByExample(example);
 		Fenlei fenlei = null;
 		for (Fenlei fenlei1 : list) {
@@ -166,8 +157,8 @@ public class FenleiServiceimpl implements FenleiService {
 		// TODO Auto-generated method stub
 		FenleiExample example = new FenleiExample();
 		Criteria criteria = example.createCriteria();
-		criteria.andFidEqualTo(Integer.parseInt(id));
-		criteria.andFnameEqualTo(name);
+		criteria.andidEqualTo(Integer.parseInt(id));
+		criteria.andnameEqualTo(name);
 		List<Fenlei> list = this.fenleiMapper.selectByExample(example);
 		Fenlei fenlei = null;
 		for (Fenlei fenlei1 : list) {
@@ -175,5 +166,12 @@ public class FenleiServiceimpl implements FenleiService {
 		}
 		// System.out.println(book);
 		return fenlei;
+	}
+
+	@Override
+	public List<Fenlei> selectFenleiAll() {
+		// TODO Auto-generated method stub
+		FenleiExample example = new FenleiExample();
+		return this.fenleiMapper.selectByExample(example);
 	}
 }

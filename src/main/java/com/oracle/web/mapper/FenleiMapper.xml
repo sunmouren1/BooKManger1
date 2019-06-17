@@ -64,7 +64,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, fname
+    id, name
   </sql>
   <select id="selectByExample" parameterType="com.oracle.web.bean.FenleiExample" resultMap="BaseResultMap">
     select
@@ -174,7 +174,7 @@
      
        
 	<select id="yanzhengAddFenlei2" parameterType="java.lang.Integer" resultType="java.lang.Integer">
-    SELECT COUNT(*) FROM book WHERE fid =#{id}
+    SELECT COUNT(*) FROM book WHERE id =#{id}
 	</select>
 	
 	<select id="selectOutPutIds"  parameterType="list" resultType="Fenlei">	<!-- 自定义 选择导出 -->

@@ -26,7 +26,7 @@
 
 		},
 		fields : {
-			fname : {
+			name:{
 				validators : {
 
 					notEmpty : {
@@ -41,16 +41,17 @@
 
 					// threshold :  6 , 有6字符以上才发送ajax请求，（input中输入一个字符，插件会向服务器发送一次，设置限制，6字符以上才开始）
 					remote : {//ajax验证。server result:{"valid",true or false} 向服务发送当前input name值，获得一个json数据。例表示正确：{"valid",true}  
-						url : "yanzhengAddFenlei",//验证地址
-						 //提示消息
+						url : "http://localhost/BooKManger1/yanzhengAddFenlei",//验证地址
+						message : '该分类已经存在,请重新输入',  //提示消息
 						delay : 500,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
 						type : 'GET',//请求方式
 
 						//自定义提交数据，默认值提交当前input value
 						data : function(validator) {
+							
 							return {
-								fid : $("#fid").val()
-								fname : $("#fname").val() 
+								
+								name : $("#name").val() 
 							 
 							}
 						}
@@ -60,7 +61,8 @@
 				}
 
 			},
-			fid : {
+			
+			id: {
 
 				validators : {
 
@@ -68,7 +70,7 @@
 
 						callback : function(value, validator) {
 
-							if (fid.value == 0) {
+							if (id.value == 0) {
 								return {
 									valid : false,
 
@@ -91,7 +93,8 @@
 #div1 {
  
 	margin-top: 20px;
-   border:1px solid #D7E4E8; 
+   border:1px solid ;
+   border-color: pink; 
 }
 
 form {
@@ -122,23 +125,23 @@ border: 1px solid #D7E4E8;
 }
 </style>
 </head>
-<body>
+<body background="imgs/3.jpg">
  <div class="container-fluid"  id="div9">
 		<!--  <marquee align="texttop" behavior="slide" scrollamount="60"
 			direction="up">-->
 			<div class="col col-md-5 col-md-offset-2" id="div1">
 
-				<h2 class="text-center text-info">添加分类</h2>
+				<h2 class="text-center text-info"><font color="red">添加分类</font></h2>
              
              <hr>
 			<form action="fenlei" method="post" id="register"
 			  class="form-horizontal">
 
 				<div class="form-group">
-					<label for="Input1" class="col col-sm-5   control-label  text-info">
-						请输入分类的名字: </label>
+					<label for="Input1" class="col col-sm-5   control-label  text-info"><font color="red">请输入分类的名字: </font>
+						</label>
 					<div class="col-sm-5">
-						<input type="text" name="fname"  
+						<input type="text" name="name"  
 							class="form-control" id="Input1" />
 
 					</div>
@@ -151,7 +154,7 @@ border: 1px solid #D7E4E8;
 							</button>
 						</div>
 						<div class="col-sm-2  col-sm-offset-1">
-							<button type="reset" class="btn btn-info">
+							<button type="reset" class="btn btn-success">
 								重置 <span class="glyphicon glyphicon-repeat"></span>
 							</button>
 						</div>
