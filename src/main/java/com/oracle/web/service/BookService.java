@@ -15,9 +15,6 @@ public interface BookService {
 	int save(Book book);
 
 	List<SubBook> list();
-
-	
-
 	
 	Book queryOne(Integer id);
 
@@ -36,6 +33,10 @@ public interface BookService {
 	List<SubBook> findName(String name);
 
 	void delete(String[] arr);
+
+	/*pageBean<SubBook> showByWhere(Integer pageNow, Book book);
+*/
+	pageBean<SubBook> showByWhere2(Book where, int pageNow);
 
 	//void exportAls(FileInputStream fileInputStream, ServletOutputStream outputStream);
 

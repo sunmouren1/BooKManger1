@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
@@ -90,7 +91,6 @@ public class BookHandler {
 	}
 
 	@RequestMapping(value = "/delete/{ids}", method = RequestMethod.DELETE)
-
 	public String deleteBookA(@PathVariable("ids") String ids) {// 批量删除
 
 		System.out.println(ids);
@@ -109,7 +109,6 @@ public class BookHandler {
 	}
 
 	@RequestMapping(value = "/deleteBook/{id}", method = RequestMethod.DELETE)
-
 	public String deleteBook(@PathVariable("id") Integer id) {// 单个删除
 
 		Book book = new Book();
@@ -156,29 +155,94 @@ public class BookHandler {
 			pageNow = 1;
 		}
 
-		// System.out.println("ok");
-
 		pageBean<SubBook> pb = this.bookService.showByPage(pageNow);
+		//System.out.println(pb+"ok");
+		 List<Fenlei> list = fenleiService.list();
 
+	      request. setAttribute("flist", list);
 		request.setAttribute("pb", pb);
-
+		//request.setAttribute("Show","showBook" );
+		
 		return "showBook";
 
 	}
 
-	@RequestMapping(value = "/showBookByWhere/name")
-	@ResponseBody
-	public String findsUser(@RequestParam(value = "name") String name, HttpServletRequest request,
-			Map<String, Object> map,
-			@RequestParam(value = "pageNow") Integer pageNow) {
+	
 
-		System.out.println(name);
-		PageHelper.startPage(pageNow, 2);
-		List<SubBook> list = this.bookService.findName(name);
-		PageInfo<SubBook> pageInfo = new PageInfo<SubBook>(list, 2);
-		map.put("pageInfo", pageInfo);
+	@RequestMapping(value= "/showBookByWhere/{pageNow}", method = RequestMethod.GET)
+	public String ByWhere(Book where, @PathVariable("pageNow") int pageNow, HttpServletRequest request,HttpSession session) throws UnsupportedEncodingException {
+           
+		String url=this.getURL2(request);
+		System.out.println("==============="+url);
+		String name=where.getName();
+		
+	    where .setName(new  String(name.getBytes("ISO-8859-1"),"UTF-8"));
+		
+		System.out.println(where.getName());
+		
+        String zhuangtai=where.getZhuangtai();
+		
+	    where .setZhuangtai(new  String(zhuangtai.getBytes("ISO-8859-1"),"UTF-8"));
+		
+		System.out.println(where.getZhuangtai());
+		
+		 String chubanshe=where.getChubanshe();
+			
+		    where .setChubanshe(new  String(chubanshe.getBytes("ISO-8859-1"),"UTF-8"));
+			
+			System.out.println(where.getChubanshe());
+			
+			 String jishuren=where.getJieshuren();
+				
+			    where .setJieshuren(new  String(jishuren.getBytes("ISO-8859-1"),"UTF-8"));
+				
+				System.out.println(where.getJieshuren());
+	     
+		pageBean<SubBook> pb = bookService. showByWhere2(where, pageNow);
+		 System.out.println(pb);
+		
+		 pb.setUrl(url);
+		 
+	      session. setAttribute("pb", pb);
+	     
+	      List<Fenlei> list = fenleiService.list();
 
-		return "showBook";
+	      request. setAttribute("flist", list);
+			
+	    request.setAttribute("Show","ago" );
+
+			return "redirect:/mohuBook.jsp";
+	      
+}
+
+	private String getURL2(HttpServletRequest req) {
+       
+		String url=this.getURL(req);
+		System.out.println(url+"----------");
+         
+		int index=url.lastIndexOf("&pageNow=");
+	    
+	    if(index==-1){
+	    	
+	    	return url;
+	    }
+	    
+
+	    	return url.substring(0, index);
+	    	
+	}
+	
+	private String getURL(HttpServletRequest request) {
+	
+		String path=request.getContextPath();///Book2
+		System.out.println(path);
+		String servlet=request.getServletPath();// BookServlet 
+		System.out.println(servlet);
+		String param=request.getQueryString();
+		
+		
+		System.out.println(path+servlet+"?"+param);
+		return path+servlet+"?"+param;
 	}
 
 	@RequestMapping(value = "/validateName.action")

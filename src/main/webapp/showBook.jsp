@@ -262,36 +262,23 @@ h1 {
 <div class="col col-md-4  col-md-offset-4" id="div2">
 			<ul class="nav nav-tabs">
 				<li><a href="addUI">添加图书</a></li>
-				<div class="dropdown  col-md-offset-3">
+				<li><a id="selectAll" >全选</a></li>
+				<li><a id="unselectAll" >全不选</a></li>
+				<li><a id="fanxuan" >反选</a></li>
+				<li><a id="outputSelect" >导出选择</a></li>
+				<li><a id="outputAll" >导出全部</a></li>
+				</ul>
+				<div class="dropdown">
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><font
-			size="4" face="幼圆"><span class="glyphicon glyphicon-search">高级搜索</span></font><span
+			size="3" face="幼圆"><span class="glyphicon glyphicon-search">高级搜索</span></font><span
 			class="caret"></span></a>
 		<div class="col-md-1 "></div>
 		<br>
 		<ul class="dropdown-menu dropdown-menu-left" role="menu">
 			<li>
-				<form action="showBookByWhere" class="form-horizontal">
+				<form  action="showBookByWhere/${pb.pageNow}"  name="where" class="form-horizontal" method="GET">
 			
-					<!-- 隐藏域，用来传递action -->
-					<input type="hidden"  name="action" value="showBookByWhere">
-					<div class="control-group   ">
-						<br> <label class="col-md-4">分类： </label>
-						<div class="col-sm-7">
-							<select  name="fId" id="fId" class="form-control" value="${b.fId}" >
-			  <c:forEach items="${flist}" var="f">
-			
-			    <c:if test="${f.id==fenLei.id}">
-			   
-			      <option value="${f.id}" selected="selected" >${f.name}</option>
-			     </c:if>
-			     <c:if test="${f.id!=fenLei.id}">
-			  <option value="${f.id}">${f.name}</option>
-			  </c:if>
-			  
-			  </c:forEach>
-				</select>	<br>
-						</div>
-					</div>
+					
 					<div class="control-group  ">
 						<br>
 						<label class="col-sm-4 ">书名:</label>
@@ -299,7 +286,7 @@ h1 {
 							<input name="name" type="text" class="form-control  input-sm" /><br>
 						</div>
 					</div>
-					<div class="control-group   ">
+					<div class="control-group">
 						<br>
 						<label class="col-sm-4"> 出版社:</label>
 						<div class="col-sm-7">
@@ -320,8 +307,31 @@ h1 {
 								class="form-control  input-sm" /><br>
 						</div>
 					</div>
-
-
+                       <div class="control-group">
+						<label class="col-sm-4"> 价格:</label>
+						<div class="col-sm-7">
+							<input name="jiage" type="text"
+								class="form-control  input-sm" /><br>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<br> <label class="col-md-4">选择分类： </label>
+						<div class="col-sm-7">
+						 
+						<select name="fId"	class="form-control input-sm">
+					    <option value="0">----请选择----</option>
+											 
+					  <c:forEach items="${flist}" var="f">
+					  
+					  <option value="${f.id}">${f.name}</option>
+					  </c:forEach>
+					</select> 
+						<br>
+						</div>
+					
+					<!-- pageNow-->
+	        <input type="hidden" name="pageNow" value="1">
 					<div class="control-group  ">
 						<label class="col-sm-4 "></label>
 						<div class="controls ss">
@@ -333,6 +343,7 @@ h1 {
 				</form>
 			</li>
 		</ul>
+		
 	</div>
 	<div class="container">
 		<caption align="top">
@@ -352,7 +363,6 @@ h1 {
 					<td>编号</td>
 					
 					<td>书名</td>
-
 
 					<td>价格</td>
 
@@ -403,14 +413,7 @@ h1 {
 				<input type="hidden"  name="_method" value="DELETE" />
 
 			</form>
-			<center>
-			
-			<button id="selectAll" class="btn btn-success btn-xs">全选</button>
-				<button id="unselectAll" class="btn btn-warning  btn-xs">全不选</button>
-				<button id="fanxuan" class="btn btn-primary btn-xs">反选</button>
-				<button id="outputSelect" class="btn btn-success btn-xs">导出选择</button>
-				<button id="outputAll" class="btn btn-info btn-xs">导出全部</button>
-				</center>
+		
 			<div>
 			<br>
 			
@@ -468,7 +471,67 @@ h1 {
 				</ul>
 
 			</center>
+			
 			</p>
+			
+			<p align="center">
+			<c:if test="${Show=='gao'}">
+								  第${pb.pageNow }页/共有${pb.pages }页
+									<ul class="pagination ">
+									<li><a href="${pb.url }&pageNow=1">首页</a></li>
+									<c:if test="${pb.pageNow>1 }">
+										<li><a aria-label="Previous"
+											href="${pb.url }&pageNow=${pb.pageNow-1 }"><span
+												aria-hidden="ture">上一页</span></a></li>
+									</c:if>
+
+									<!-- 分页2种情况
+			               1.页数小于10
+			                   2.页数大于10
+			                         -->
+
+									<c:choose>
+										<c:when test="${pb.pages<=10 }">
+											<c:set var="begin" value="1"></c:set>
+											<c:set var="end" value="${pb.pages }"></c:set>
+										</c:when>
+										<c:otherwise>
+											<c:set var="begin" value="${pb.pageNow-5 }"></c:set>
+											<c:set var="end" value="${pb.pageNow+4 }"></c:set>
+											<c:if test="${begin<=1 }">
+												<c:set var="begin" value="1"></c:set>
+												<c:set var="end" value="10"></c:set>
+											</c:if>
+											<c:if test="${end>=pb.pages }">
+												<c:set var="begin" value="${pb.pages-9 }"></c:set>
+												<c:set var="end" value="${pb.pages}"></c:set>
+											</c:if>
+
+										</c:otherwise>
+									</c:choose>
+									<!-- 每页面显示10页数 -->
+
+									<c:forEach begin="${begin }" end="${end }" var="i">
+										<c:choose>
+											<c:when test="${pb.pageNow==i }">
+												<li class="active"><span>${i }</span></li>
+											</c:when>
+											<c:otherwise>
+												<li><a href="${pb.url }&pageNow=${i}">${i }</a></li>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+
+
+									<c:if test="${pb.pageNow<pb.pages }">
+										<li><a href="${pb.url }&pageNow=${pb.pageNow+1 }"
+											aria-label="Previous"><span aria-hidden="ture">下一页</span></a>
+										</li>
+									</c:if>
+									<li><a href="${pb.url }&pageNow=${pb.pages}">尾页 </a></li>
+								</ul>
+								</c:if>
+								</p>
 			</div>
 </body>
 </html>

@@ -75,7 +75,7 @@ public class BookServiceimpl implements BookService {
 		pb.setBeanList(list);
 		
 		//总记录数
-		System.out.println("ok2");
+		//System.out.println("ok2");
 		
 		PageInfo<SubBook> pi=new PageInfo<SubBook>(list);
 		
@@ -130,7 +130,45 @@ public class BookServiceimpl implements BookService {
 		return this.BookMapper.findName(name);
 	}
 
+	/*@Override
+	@Transactional
+	public pageBean<SubBook> showByWhere(Integer pageNow, Book book) {
+		// TODO Auto-generated method stub
+		return this.BookMapper.showByWhere(pageNow, book);
+	}*/
+
+	@Override
+	@Transactional
+	public pageBean<SubBook> showByWhere2(Book where, int pageNow) {
+
+      pageBean<SubBook> pb = new pageBean<SubBook>();
+
+      //当前页的数据
+
+      PageHelper.startPage(pageNow,2);//分页好的数据
+
+      List<SubBook> list = this.BookMapper.showWhere2(where);
+
+      pb.setBeanList(list);//总记录数
+
+      PageInfo<SubBook> pi = new PageInfo<SubBook> (list);
+
+      pb. setCounts((int) pi. getTotal());
+
+      //当前页
+
+      pb . setPageNow(pi . getPageNum()); 
+
+      //每页显示的条数-自定义
+
+      pb. setpageSize( pi. getPageSize());
 
 	
+
+	return pb;
+	
+
+	}
+
 
 }

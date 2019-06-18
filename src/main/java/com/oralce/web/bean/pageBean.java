@@ -18,7 +18,21 @@ public class pageBean<T> implements Serializable {
 	
 	private List<T> beanList;
 
-	
+	private String url;
+
+	public pageBean(int pageNow, int counts, int pages, int pageSize, List<T> beanList, String url) {
+		super();
+		this.pageNow = pageNow;
+		this.counts = counts;
+		this.pages = pages;
+		this.pageSize = pageSize;
+		this.beanList = beanList;
+		this.url = url;
+	}
+
+	public String getUrl() {
+		return url;
+	}
 
 	public pageBean() {
 		super();
@@ -85,8 +99,14 @@ public class pageBean<T> implements Serializable {
 	@Override
 	public String toString() {
 		return "pageBean [pageNow=" + pageNow + ", counts=" + counts + ", pages=" + pages + ", pageSize=" + pageSize
-				+ ", beanList=" + beanList + "]";
+				+ ", beanList=" + beanList + ", url=" + url + "]";
 	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	
 	
 	
 }

@@ -1,108 +1,186 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.oracle.web.mapper.BookMapper">
-  <resultMap id="BaseResultMap" type="com.oralce.web.bean.Book">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="jiage" jdbcType="VARCHAR" property="jiage" />
-    <result column="chubanshe" jdbcType="VARCHAR" property="chubanshe" />
-    <result column="zhuangtai" jdbcType="VARCHAR" property="zhuangtai" />
-    <result column="jieshuren" jdbcType="VARCHAR" property="jieshuren" />
-    <result column="fenlei" jdbcType="VARCHAR" property="fenlei" />
-    <result column="f_id" jdbcType="INTEGER" property="fId" />
-  </resultMap>
-  
-   <resultMap id="BaseResultMap2" type="com.oralce.web.bean.SubBook">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="jiage" jdbcType="VARCHAR" property="jiage" />
-    <result column="chubanshe" jdbcType="VARCHAR" property="chubanshe" />
-    <result column="zhuangtai" jdbcType="VARCHAR" property="zhuangtai" />
-    <result column="jieshuren" jdbcType="VARCHAR" property="jieshuren" />
-    <result column="fenlei" jdbcType="VARCHAR" property="fenlei" />
-    <result column="f_id" jdbcType="INTEGER" property="fId" />
-    
-    		<!-- 映射对象：关联对象School -->
+	<resultMap id="BaseResultMap" type="com.oralce.web.bean.Book">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="jiage" jdbcType="VARCHAR" property="jiage" />
+		<result column="chubanshe" jdbcType="VARCHAR" property="chubanshe" />
+		<result column="zhuangtai" jdbcType="VARCHAR" property="zhuangtai" />
+		<result column="jieshuren" jdbcType="VARCHAR" property="jieshuren" />
+		<result column="fenlei" jdbcType="VARCHAR" property="fenlei" />
+		<result column="f_id" jdbcType="INTEGER" property="fId" />
+	</resultMap>
+
+	<resultMap id="BaseResultMap2" type="com.oralce.web.bean.SubBook">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="jiage" jdbcType="VARCHAR" property="jiage" />
+		<result column="chubanshe" jdbcType="VARCHAR" property="chubanshe" />
+		<result column="zhuangtai" jdbcType="VARCHAR" property="zhuangtai" />
+		<result column="jieshuren" jdbcType="VARCHAR" property="jieshuren" />
+		<result column="fenlei" jdbcType="VARCHAR" property="fenlei" />
+		<result column="f_id" jdbcType="INTEGER" property="fId" />
+
+		<!-- 映射对象：关联对象School -->
 		<association property="fenLei" javaType="Fenlei">
 			<id property="id" column="id"></id>
-			<result property="name" column="name"/>
-			
-		</association> 
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from book
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.oralce.web.bean.Book">
-    insert into book (id, name, jiage, 
-      chubanshe, zhuangtai, jieshuren, 
-      fenlei, f_id)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{jiage,jdbcType=VARCHAR}, 
-      #{chubanshe,jdbcType=VARCHAR}, #{zhuangtai,jdbcType=VARCHAR}, #{jieshuren,jdbcType=VARCHAR}, 
-      #{fenlei,jdbcType=VARCHAR}, #{fId,jdbcType=INTEGER})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.oralce.web.bean.Book">
-    update book
-    set name = #{name,jdbcType=VARCHAR},
-      jiage = #{jiage,jdbcType=VARCHAR},
-      chubanshe = #{chubanshe,jdbcType=VARCHAR},
-      zhuangtai = #{zhuangtai,jdbcType=VARCHAR},
-      jieshuren = #{jieshuren,jdbcType=VARCHAR},
-      fenlei = #{fenlei,jdbcType=VARCHAR},
-      f_id = #{fId,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, name, jiage, chubanshe, zhuangtai, jieshuren, fenlei, f_id
-    from book
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, name, jiage, chubanshe, zhuangtai, jieshuren, fenlei, f_id
-    from book
-  </select>
-  
-  <select id="selectAllWithOneSQL" resultMap="BaseResultMap2">
-    select *
-    from book,fenlei where book.f_id=fenlei.id 
-  </select>
-  
-  <select id="showByPageHelper" resultMap="BaseResultMap2">
-   select *
-    from book,fenlei where book.f_id=fenlei.id 
-  </select>
-  <delete id="deleteByIds" parameterType="java.lang.String">
-  delete from book where id in
+			<result property="name" column="name" />
 
-     <foreach collection="array" item="ids" open="(" separator=","
+		</association>
+	</resultMap>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from book
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.oralce.web.bean.Book">
+		insert into book (id, name, jiage,
+		chubanshe, zhuangtai, jieshuren,
+		fenlei, f_id)
+		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+		#{jiage,jdbcType=VARCHAR},
+		#{chubanshe,jdbcType=VARCHAR}, #{zhuangtai,jdbcType=VARCHAR}, #{jieshuren,jdbcType=VARCHAR},
+		#{fenlei,jdbcType=VARCHAR}, #{fId,jdbcType=INTEGER})
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="com.oralce.web.bean.Book">
+		update book
+		set name = #{name,jdbcType=VARCHAR},
+		jiage = #{jiage,jdbcType=VARCHAR},
+		chubanshe = #{chubanshe,jdbcType=VARCHAR},
+		zhuangtai = #{zhuangtai,jdbcType=VARCHAR},
+		jieshuren = #{jieshuren,jdbcType=VARCHAR},
+		fenlei = #{fenlei,jdbcType=VARCHAR},
+		f_id = #{fId,jdbcType=INTEGER}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select id, name, jiage, chubanshe, zhuangtai, jieshuren, fenlei, f_id
+		from book
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select id, name, jiage, chubanshe, zhuangtai, jieshuren, fenlei, f_id
+		from book
+	</select>
+
+	<select id="selectAllWithOneSQL" resultMap="BaseResultMap2">
+		select *
+		from book,fenlei where book.f_id=fenlei.id
+	</select>
+
+	<select id="showByPageHelper" resultMap="BaseResultMap2">
+		select *
+		from book,fenlei where book.f_id=fenlei.id
+	</select>
+	<delete id="deleteByIds" parameterType="java.lang.String">
+		delete from book where id in
+
+		<foreach collection="array" item="ids" open="(" separator=","
 			close=")">
 			#{ids}
 		</foreach>
 
-  </delete>
-  <select id="validateName" parameterType="java.lang.String" resultMap="BaseResultMap">
-  select name from  book b where b.name=#{name}
- 
-  </select>
-  <select id="list2" resultMap="BaseResultMap">
-  select * from book
-  </select>
-  
-  <select id="queryBooks"  parameterType="java.lang.String" resultMap="BaseResultMap">
-  select * from book where id in
-  
-   <foreach collection="array" item="ids" index="no" open="(" separator="," 
-			close=")" >
+	</delete>
+	<select id="validateName" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select name from book b where b.name=#{name}
+
+	</select>
+	<select id="list2" resultMap="BaseResultMap">
+		select * from book
+	</select>
+
+	<select id="queryBooks" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select * from book where id in
+
+		<foreach collection="array" item="ids" index="no" open="("
+			separator="," close=")">
 			#{ids}
 		</foreach>
-  </select>
-  <select id="findName" parameterType="java.lang.String" resultMap="BaseResultMap2">
-        SELECT * FROM book
-        <where>
-            <if test="name != null and name != ''">
-                AND name LIKE CONCAT(CONCAT('%',#{name},'%'))
-            </if>
-        </where>
-        ORDER BY id
-    </select>
+	</select>
+	<select id="findName" parameterType="java.lang.String"
+		resultMap="BaseResultMap2">
+		        SELECT * FROM book
+		       
+		<where>
+			           
+			<if test="name != null and name != ''">
+				                AND name LIKE CONCAT(CONCAT('%',#{name},'%'))
+				           
+			</if>
+			       
+		</where>
+		        ORDER BY id
+		   
+	</select>
+	<select id="showWhere" parameterType="com.oralce.web.bean.Book" resultMap="BaseResultMap2">
+		select  *
+		from book,fenlei
+		<where>
+				<if test="name != null and name != ''">
+				        name=#{name}        
+			</if>
+            <if test="jiage!=null and jiage!=''">
+				And jiage=#{jiage}
+			</if>
+           <if test="chubanshe!=null and chubanshe!=''">
+				And chubanshe=#{chubanshe}
+			</if>
+			
+			<if test="zhuantai!=null and zhuangtai!=''">
+				And zhuangtai=#{zhuangtai}
+			</if>
+			
+			<if test="jieshuren!=null and jieshuren!=''">
+				And jieshuren=#{jieshuren}
+			</if>
+			<if test="fenlei!=null and fenlei!=''">
+				And fenlei=#{fenlei}
+			</if>
+			<if test="f_id!=0">
+				And f_id=#{f_id}
+			</if>
+		</where>
+               ORDER BY book.id
+
+	</select>
+	
+<select id="showWhere2"   resultMap="BaseResultMap2" >
+
+      select * from book
+      <where>
+ 
+      <if test="where.fId != 0 ">
+
+      and f_id = #{where.fId, jdbcType=INTEGER}
+       </if> 
+
+     <if test= "where.name!= null and where.name!='' ">
+
+      AND name LIKE CONCAT(CONCAT( '%' ,#{where.name ,jdbcType=VARCHAR}, '%'))</if>
+
+      <if test= "where.jiage!= null and where.jiage!='' ">
+
+      AND jiage LIKE CONCAT(CONCAT( '%',#{where.jiage ,jdbcType=VARCHAR}, '%'))</if>
+
+      <if test= "where.chubanshe != null and where.chubanshe !='' ">
+
+      AND chubanshe LIKE CONCAT(CONCAT( '%',#{where.chubanshe ,jdbcType=VARCHAR}, '%'))</if>
+
+      <if test= "where.zhuangtai != null and where.zhuangtai !='' ">
+
+      AND zhuangtai LIKE CONCAT(CONCAT( '%',#{where.zhuangtai ,jdbcType=VARCHAR}, '%'))</if>
+
+      <if test="where.jieshuren != null and where.jieshuren !='' ">
+
+      AND jieshuren LIKE CONCAT(CONCAT( '%',#{where.jieshuren ,jdbcType=VARCHAR}, '%'))</if>
+      
+      </where>
+
+    order by id 
+      
+      </select>
+	
 </mapper>
