@@ -31,7 +31,7 @@ h2 {
 		         
 	})
 </script>
-<body background="imges/6.jpg">
+<body background="imges/19.jpg">
      <h2 class="demoHeaders" align="center">菜单</h2>
 	<div id="accordion">
 	

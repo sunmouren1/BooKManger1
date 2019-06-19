@@ -37,6 +37,19 @@
 							regexp : /^[\u0391-\uFFE5]{1,20}$/,
 							message : '书名必须是1~20个汉字'
 						},
+                        remote:{
+					 		
+					 		url:"validateName.action",
+					 		message:'图书名已存在，请重新输入',
+					 		delay:500,
+					 		type:'POST',
+					 		data:function(validator){
+					 			return {
+					 			name:$("input[name=name]").val(),
+					 			}
+					 		}
+					 		
+					 	}
 					}
 				},
 				jiage : {
@@ -108,11 +121,11 @@
 
 
 </head>
-<body background="imges/10.jpg">
+<body background="imges/19.jpg">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
-				<form id="login"  action="add"  method="post">
+				<form id="login"  action="addbook"  method="post">
 					<h3 class="text-center text-success">添加图书</h3>
 					<div class="form-group">
 						<label>图&nbsp;书&nbsp;名&nbsp;称:</label> <input type="text"
@@ -152,7 +165,7 @@
 				<div>
 					<label>分类Id</label> 
 					
-					 <select name="fenLei" class="form-control">
+					 <select name="fId" class="form-control">
 					 
 					  <c:forEach items="${flist}" var="f">
 					  
@@ -165,22 +178,31 @@
 					<br>
 					<div class="form-group">
 				<div class="col-sm-12">
-				  <center>
-					<button type="submit" class="btn btn-info">添加图书</button>
-					</center>
+				  
+				<button type="submit" class="btn btn-info">添加图书</button>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<button type="reset" class="btn btn-info">重置</button>
+					
 				</div>
 			</div>
 			
 			<br>
-					<br>
 					<div class="form-group">
 				<div class="col-sm-12">
 				  <center>
-					<button type="reset" class="btn btn-info">重置</button>
+					
 					</center>
 				</div>
 			</div>
-			
+			<br>
+					<div class="form-group">
+				<div class="col-sm-12">
+				  <center>
+					 <p align="center"><a href="showByPage" class="btn btn-info ">查看图书</a></p>
+					</center>
+				</div>
+			</div>
 			
 			
 				</form>

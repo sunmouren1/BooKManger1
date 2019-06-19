@@ -195,7 +195,7 @@ public class  FenLeiHandler{
 					response.getWriter().write("{\"valid\":\"false\"}");
 				}
 			  
-			} else {
+			} else { 
 				
 
 				response.getWriter().write("{\"valid\":\"false\"}");

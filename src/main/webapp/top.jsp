@@ -14,7 +14,7 @@
 </style>
 </head>
      <!-- -  -->
-<body  background="imgs/3a.jpg">
+<body  background="imges/19.jpg">
 <br>
 
   <h1 align="center"><font color="white" size="6">白羊图书管理系统</font></h1>

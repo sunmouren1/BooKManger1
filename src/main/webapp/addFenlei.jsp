@@ -93,8 +93,7 @@
 #div1 {
  
 	margin-top: 20px;
-   border:2px solid ;
-   border-color: pink; 
+
 }
 
 form {
@@ -125,13 +124,13 @@ border: 1.5px solid red;
 }
 </style>
 </head>
-<body background="imgs/3.jpg">
+<body background="imges/19.jpg">
  <div class="container-fluid"  id="div9">
 		<!--  <marquee align="texttop" behavior="slide" scrollamount="60"
 			direction="up">-->
 			<div class="col col-md-5 col-md-offset-2" id="div1">
 
-				<h2 class="text-center text-info"><font color="red">添加分类</font></h2>
+				<h2 class="text-center text-info"><font color="greed">添加分类</font></h2>
              
              <hr>
 			<form action="fenlei" method="post" id="register"
@@ -149,12 +148,12 @@ border: 1.5px solid red;
 				</div>
                  <div class="form-group">
 						<div class="col-sm-2  col-sm-offset-3 ">
-							<button type="submit" class="btn btn-success">
+							<button type="submit" class="btn btn-info">
 								添加 <span class="glyphicon glyphicon-ok"></span>
 							</button>
 						</div>
 						<div class="col-sm-2  col-sm-offset-1">
-							<button type="reset" class="btn btn-success">
+							<button type="reset" class="btn btn-info">
 								重置 <span class="glyphicon glyphicon-repeat"></span>
 							</button>
 						</div>
